@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-gray-100 flex justify-between p-6">
+      <div className="bg-black flex justify-between p-4">
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -15,8 +15,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React v0</h1>
-      <div className="card">
+      <h1 className="text-3xl font-bold mb-4">Vite + React v1</h1>
+      <div className="card p-6 bg-green-100 rounded-xl">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -24,9 +24,6 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
