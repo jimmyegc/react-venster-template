@@ -1,73 +1,304 @@
-# React + TypeScript + Vite
+Correr **Ollama** en tu máquina es como tener un pequeño laboratorio de IA personal. No es sólo “un chatbot local”; en realidad es un **motor para crear sistemas inteligentes privados**. Cuando lo combinas con código (Node, Python, scripts, cron jobs, APIs), empiezan a aparecer cosas interesantes.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Piénsalo así: el modelo es el **cerebro**, pero tú construyes el **cuerpo y los sentidos**. Vamos a jugar con ideas que un desarrollador puede construir en local.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 1. Un asistente que entienda todo tu código
 
-## React Compiler
+Un clásico poderoso.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Cargas tu repositorio completo y el modelo puede:
 
-## Expanding the ESLint configuration
+- explicar funciones
+- encontrar bugs
+- sugerir refactors
+- generar documentación
+- crear tests
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Arquitectura simple:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+Repo → embeddings → vector DB
+                    ↓
+                 Ollama
+                    ↓
+            respuestas sobre el código
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Esto es básicamente un **GitHub Copilot privado**, pero con control total.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Modelos que funcionan bien:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `deepseek-coder`
+- `codellama`
+- `mistral`
+
+---
+
+## 2. Un agente que lea tus correos y te sugiera respuestas
+
+Esto ya se pone interesante.
+
+Flujo:
+
+```
+IMAP / Gmail API
+      ↓
+descargar correos
+      ↓
+Ollama analiza
+      ↓
+clasifica:
+- ventas
+- soporte
+- spam
+- clientes
+      ↓
+genera borrador de respuesta
+```
+
+El resultado:
+un **asistente que te prepara respuestas antes de que abras el correo**.
+
+Empieza a parecer magia… pero es sólo automatización con LLM.
+
+---
+
+## 3. Un buscador inteligente para tus documentos
+
+Un **Google privado de tu computadora**.
+
+Le das:
+
+- PDFs
+- contratos
+- notas
+- libros
+- documentación
+
+Luego preguntas:
+
+```
+¿qué dice el contrato sobre penalizaciones?
+```
+
+Y te responde con contexto real del documento.
+
+Esto se llama **RAG (Retrieval Augmented Generation)**.
+
+Herramientas útiles:
+
+- `Chroma`
+- `Weaviate`
+- `LanceDB`
+
+---
+
+## 4. Un agente que investigue prospectos para tu negocio
+
+Esto conecta perfecto con tu proyecto **nmda**.
+
+Flujo posible:
+
+```
+script → busca negocios en google maps
+       → scrap web
+       → obtiene email
+       → analiza sitio web
+       ↓
+Ollama evalúa:
+- si tienen mala web
+- si no tienen web
+- si su web es vieja
+       ↓
+genera propuesta personalizada
+```
+
+Salida:
+
+```
+Hola, vi que su sitio web no está optimizado para móviles...
+```
+
+Esto es literalmente **un generador automático de leads**.
+
+---
+
+## 5. Un analizador de candidatos técnicos
+
+Esto conecta con lo que ya hiciste con evaluaciones.
+
+Tu sistema podría:
+
+1. recibir repositorios
+2. ejecutar tests
+3. pasar código a Ollama
+4. evaluar:
+
+- calidad
+- arquitectura
+- complejidad
+- estilo
+
+Resultado:
+
+```
+Score técnico
+Observaciones
+Nivel estimado
+```
+
+Un **recruiter técnico automático**.
+
+---
+
+## 6. Un copiloto para tu sistema SaaS
+
+Tu SaaS de eventos podría tener un agente que responda preguntas:
+
+```
+¿cuántos invitados faltan por confirmar?
+¿quién se sienta en la mesa 4?
+¿cuántos asistentes llegaron hoy?
+```
+
+El modelo traduce lenguaje natural → consultas.
+
+```
+Usuario → pregunta
+LLM → genera SQL
+Backend → ejecuta
+LLM → explica resultado
+```
+
+Esto es básicamente **un panel conversacional**.
+
+---
+
+## 7. Un “segundo cerebro”
+
+Esto es algo que muchos hackers de productividad construyen.
+
+Tu IA local recuerda:
+
+- notas
+- ideas
+- links
+- proyectos
+- conversaciones
+
+Luego puedes preguntar:
+
+```
+¿qué ideas tenía para el SaaS de eventos?
+```
+
+El sistema responde usando tu propia memoria.
+
+Tu propia **base de conocimiento personal**.
+
+---
+
+## 8. Un agente que controle tu computadora
+
+Nivel divertido.
+
+El flujo:
+
+```
+usuario: "abre mi repo de eventos"
+LLM → decide acción
+script → ejecuta comando
+```
+
+Puede:
+
+- abrir archivos
+- ejecutar scripts
+- buscar cosas
+- automatizar tareas
+
+Un **Jarvis local**.
+
+---
+
+## 9. Un generador automático de contenido
+
+Para marketing.
+
+Entrada:
+
+```
+tema: desarrollo web para restaurantes
+```
+
+Salida automática:
+
+- post LinkedIn
+- hilo Twitter
+- blog
+- ideas de anuncios
+
+Todo generado **sin enviar datos a la nube**.
+
+---
+
+## 10. Un laboratorio de agentes autónomos
+
+Aquí empieza la frontera interesante.
+
+Puedes crear un loop:
+
+```
+objetivo
+   ↓
+plan
+   ↓
+ejecutar
+   ↓
+evaluar resultado
+   ↓
+mejorar plan
+```
+
+Esto se parece a proyectos como:
+
+- AutoGPT
+- OpenDevin
+
+Pero usando **tu propio modelo local**.
+
+---
+
+## Una observación curiosa (modo científico nerd)
+
+Estamos entrando en un momento extraño en la historia del software.
+
+Antes:
+
+```
+programas = lógica escrita por humanos
+```
+
+Ahora:
+
+```
+programas = lógica humana + razonamiento de modelos
+```
+
+Y cuando lo ejecutas **localmente**, recuperas algo muy importante:
+
+**control y privacidad**.
+
+---
+
+Un camino particularmente poderoso para un desarrollador es combinar:
+
+```
+Ollama
++ Node.js
++ cron jobs
++ scraping
++ vector DB
 ```

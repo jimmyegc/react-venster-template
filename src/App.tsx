@@ -15,7 +15,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1 className="text-2xl font-bold mb-4">Vite + React v2.0</h1>
+      <h1 className="text-2xl font-bold mb-4">Hello v0</h1>
       <div className="card p-6 bg-green-100 rounded-xl">
         <button
           className="bg-orange-400 py-2 px-4 rounded-xl cursor-pointer hover:bg-orange-500"
