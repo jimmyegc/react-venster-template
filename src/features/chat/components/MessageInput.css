@@ -1,0 +1,105 @@
+.message-input-form {
+  padding: 16px 20px;
+  border-top: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  position: sticky;
+  bottom: 0;
+}
+
+.message-input-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 24px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #1f2937; /* ensure readable text even if global theme sets light text */
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.message-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.message-input:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.message-input::placeholder {
+  color: #9ca3af;
+}
+
+.send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box; /* keep overall size 44x44 when adding padding */
+  padding: 2px; /* create a subtle inner margin so the icon sits inside the circle */
+  line-height: 0; /* avoid extra inline height from baseline */
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.send-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.send-button:disabled {
+  background-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.send-button svg { /* Size of the paper-plane icon relative to the button */
+  width: 80%;
+  height: 80%;
+}
+
+@media (max-width: 768px) {
+  .message-input-form {
+    padding: 12px 16px;
+  }
+  
+  .message-input-container {
+    gap: 8px;
+  }
+  
+  .message-input {
+    padding: 10px 14px;
+    font-size: 0.875rem;
+  }
+  
+  .send-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* SVG scales with button size via percentage, so no mobile-specific override needed */
+}
